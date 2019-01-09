@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Tasks.Models;
 using Tasks.Services;
 
 namespace Tasks.Controllers
@@ -11,10 +13,15 @@ namespace Tasks.Controllers
         _taskService = taskService;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-      var tasks = _taskService.GetItemAsync();
-      return View(tasks);
+      var tasks = await _taskService.GetItemAsync();
+
+      var model = new TaskViewModel();
+      {
+        model.TaskItems = tasks;
+      }
+      return View(model) ;
     }
   }
 }
