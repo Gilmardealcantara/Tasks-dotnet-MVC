@@ -42,7 +42,7 @@ namespace Tasks
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // register service
-            services.AddTransient<ITaskItemService, TempTaskItemService>();
+            services.AddTransient<ITaskItemService, TaskItemService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

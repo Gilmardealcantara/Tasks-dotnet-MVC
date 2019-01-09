@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Tasks.Data.Migrations
+namespace Tasks.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class CreateTask : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,21 @@ namespace Tasks.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tasks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IsComplete = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
+                    ConclusionDate = table.Column<DateTimeOffset>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tasks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -206,6 +221,9 @@ namespace Tasks.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

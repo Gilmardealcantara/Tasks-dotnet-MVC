@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Tasks.Models;
 
 namespace Tasks.Data
 {
@@ -12,5 +13,7 @@ namespace Tasks.Data
             : base(options)
         {
         }
+
+        public DbSet<TaskItem> Tasks {get; set;}
     }
 }
