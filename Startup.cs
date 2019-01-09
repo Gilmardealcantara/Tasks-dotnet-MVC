@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Tasks.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Tasks.Services;
 
 namespace Tasks
 {
@@ -39,6 +40,9 @@ namespace Tasks
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // register service
+            services.AddTransient<ITaskItemService, TempTaskItemService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
