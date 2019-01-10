@@ -6,6 +6,6 @@ namespace Tasks.Services
 {
     public interface ITaskItemService
     {
-         Task<IEnumerable<TaskItem>> GetItemAsync();
+         Task<IEnumerable<TaskItem>> GetItemAsync(bool? type);
     }
 }

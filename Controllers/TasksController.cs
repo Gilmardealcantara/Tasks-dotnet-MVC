@@ -1,10 +1,12 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Tasks.Models;
 using Tasks.Services;
 
 namespace Tasks.Controllers
 {
+  [Authorize]
   public class TasksController: Controller
   {
     ITaskItemService _taskService; 
@@ -13,9 +15,9 @@ namespace Tasks.Controllers
         _taskService = taskService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(bool? type)
     {
-      var tasks = await _taskService.GetItemAsync();
+      var tasks = await _taskService.GetItemAsync(type);
 
       var model = new TaskViewModel();
       {

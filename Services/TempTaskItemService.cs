@@ -7,7 +7,7 @@ namespace Tasks.Services
 {
   public class TempTaskItemService : ITaskItemService
   {
-    public Task<IEnumerable<TaskItem>> GetItemAsync()
+    public Task<IEnumerable<TaskItem>> GetItemAsync(bool? type)
     {
       IEnumerable<TaskItem> items = new[]
       {
