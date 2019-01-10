@@ -12,6 +12,7 @@
         <td>&#x2714;</td>
         <td>task</td>
         <td>prediction</td>
+        <td>OnwerId</td>
       </tr>
     </thead>
     @foreach (var item in Model.TaskItems)
@@ -22,6 +23,7 @@
           </td>
           <td>@item.Name</td>
           <td>@string.Format("{0:dd/MM/yyy HH:mm:ss}", @item.ConclusionDate)</td>
+          <td>@item.OwnerId</td>
         </tr>
     }
   </table>
